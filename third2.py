@@ -85,3 +85,19 @@ if authentication_status:
         st.write(learning_plan)
         progress_bar.progress(100)
         
+    # Add option to download learning plan as doc or pdf
+    if st.button("Descargar como archivo"):
+        # Ask user which format they want to download the file in
+        file_format = st.selectbox("Seleccione el formato del archivo: ", ["Doc", "PDF"])
+
+        # Set the filename based on user inputs
+        filename = f"{subject_area}_{grade_level}_{topic.replace(' ', '_')}"
+
+        # Generate the file in the selected format
+        if file_format == "Doc":
+            generate_doc(learning_plan, filename)
+            st.success(f"El archivo {filename}.doc se ha descargado correctamente!")
+        else:
+            generate_pdf(learning_plan, filename)
+            st.success(f"El archivo {filename}.pdf se ha descargado correctamente!")
+    
