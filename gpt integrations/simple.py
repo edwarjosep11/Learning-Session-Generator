@@ -1,6 +1,7 @@
 import openai
+import os
 
-openai.api_key = "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"
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 grado = ["1er grado", "2do grado", "3er grado", "4to grado", "5to grado", "6to grado"]
 curso = ['Comunicación', 'Matemática', 'Personal Social', 'Ciencia y Tecnología', 'Arte', 'Educación Religiosa', 'Educación Física', 'Tutoría']

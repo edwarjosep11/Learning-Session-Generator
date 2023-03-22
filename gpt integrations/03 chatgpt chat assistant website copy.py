@@ -1,7 +1,8 @@
 import openai
 import gradio
+import os
 
-openai.api_key = "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"
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 messages = [{"role": "system", "content": "You are a primary teacher with a lot years of experience and specialized in all the subjects."}]
 

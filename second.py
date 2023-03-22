@@ -7,7 +7,7 @@ from docx import Document
 import pdfkit 
 import os
 
-openai.api_key = "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"
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 def generate_learning_plan(grade_level, subject_area, topic):
     # Use ChatGPT to generate the learning plan based on user inputs
