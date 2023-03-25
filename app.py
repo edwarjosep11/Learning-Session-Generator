@@ -96,44 +96,44 @@ if authentication_status:
 
    
         # Add text input field to the sidebar
-with st.sidebar:
-    st.subheader('¿Necesitas ideas para tu sesión?')
-    st.write('Aquí puedes preguntar lo que quieras ¡Debe ser detallado! Ejemplos:')
-    st.write('  * Dame 5 problemas de sumas y restas para 2do de primaria con contexto.')
-    st.write('  * Texto del Día del Agua para 5to de primaria en formato de cuento, con preguntas de comprensión lectora')  
-    user_input = st.sidebar.text_input("En qué te puedo ayudar:")
+    with st.sidebar:
+        st.subheader('¿Necesitas ideas para tu sesión?')
+        st.write('Aquí puedes preguntar lo que quieras ¡Debe ser detallado! Ejemplos:')
+        st.write('  * Dame 5 problemas de sumas y restas para 2do de primaria con contexto.')
+        st.write('  * Texto del Día del Agua para 5to de primaria en formato de cuento, con preguntas de comprensión lectora')  
+        user_input = st.sidebar.text_input("En qué te puedo ayudar:")
 
-    # Add button to the sidebar
-    if st.sidebar.button("Preguntar"):
-        # Call the OpenAI API
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=user_input,
-            max_tokens=1024,
-            n=1,
-            stop=None,
-            temperature=0.3,
-        )
+        # Add button to the sidebar
+        if st.sidebar.button("Preguntar"):
+            # Call the OpenAI API
+            response = openai.Completion.create(
+                engine="text-davinci-003",
+                prompt=user_input,
+                max_tokens=1024,
+                n=1,
+                stop=None,
+                temperature=0.3,
+            )
 
-        # Convert the response to a Word document
-        bot_response = response.choices[0].text
-        doc = docx.Document()
-        doc.add_paragraph(bot_response)
+            # Convert the response to a Word document
+            bot_response = response.choices[0].text
+            doc = docx.Document()
+            doc.add_paragraph(bot_response)
 
-        # Convert the document to binary data
-        with tempfile.NamedTemporaryFile(delete=False) as f:
-            doc.save(f.name)
-            f.flush()
-            data = f.read()
+            # Convert the document to binary data
+            with tempfile.NamedTemporaryFile(delete=False) as f:
+                doc.save(f.name)
+                f.flush()
+                data = f.read()
 
-        # Download the document
-        st.download_button(
-            label="Descargar respuesta como documento de Word",
-            data=data,
-            file_name="respuesta.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        )
+            # Download the document
+            st.download_button(
+                label="Descargar respuesta como documento de Word",
+                data=data,
+                file_name="respuesta.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            )
 
-        # Display the bot response text in the sidebar
-        st.sidebar.text(bot_response)
+            # Display the bot response text in the sidebar
+            st.sidebar.text(bot_response)
         
