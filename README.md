@@ -1,5 +1,9 @@
-# Learning Plan Generator
-This is a Streamlit app that generates a detailed learning plan for primary education teachers in Spanish. The learning plan includes components such as learning objectives, activity preparation, strategy development, assessment rubric, and reflection. The plan is generated using OpenAI's GPT-3 language model.
+# Learning Session Generator
+This is an app created with Streamlit and OpenAI API that generates a detailed learning plan for primary education teachers in Spanish. The learning plan includes components such as learning objectives, activity preparation, strategy development, assessment rubric, and reflection. The plan is generated using OpenAI's GPT-3 language model and includes a chatbot which also uses this engine. Finally, the user is allowed to download the responses in a .docx file. 
+
+## App Link
+* The app was deployed using Heroku and is accessible through this link: 
+* https://planificadorprofesores.herokuapp.com/
 
 ## Installation
 To run this app locally, follow these steps:
@@ -20,4 +24,12 @@ If you find a bug or have a feature request, please open an issue on this reposi
 
 ## License
 This project is licensed under the MIT License.
+
+## Photos
+Screenshots of the project results are stored in the img folder.
+
+![Alt text](img/1.jpg) 
+![Alt text](img/2.jpg) 
+![Alt text](img/6.jpg) 
+
  
